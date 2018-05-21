@@ -33,4 +33,9 @@ class Article extends AdminBase
     {
         return $this->fetch();
     }
+
+    public function search_keywords()
+    {
+        return $this->fetch();
+    }
 }
