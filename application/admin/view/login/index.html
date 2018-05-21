@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理系统</title>
+    <link href="/resource/admin/css/base.css" rel="stylesheet" type="text/css" />
+    <link href="/resource/admin/css/login.css" rel="stylesheet" type="text/css" />
+    <script src="/resource/js/jquery/jquery.js" language="javascript" type="text/javascript"></script>
+    <script type="text/javascript">
+        $ = jQuery;
+        function changeAuthCode() {
+            var num = 	new Date().getTime();
+            var rand = Math.round(Math.random() * 10000);
+            num = num + rand;
+            $('#ver_code').css('visibility','visible');
+            if ($("#vdimgck")[0]) {
+                $("#vdimgck")[0].src = "/verify";
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+<div id="login-box">
+    <div class="login-top"><a href="/" target="_blank" title="返回网站主页">返回网站主页</a></div>
+    <div class="login-main">
+    <form name="form1" method="post" action="/admin/login/check">
+        <dl>
+            <dt>用户名：</dt>
+            <dd><input type="text" name="username"/></dd>
+            <dt>密&nbsp;码：</dt>
+            <dd><input type="password" class="alltxt" name="password"/></dd>
+            <dt>验证码：</dt>
+            <dd><input id="vdcode" type="text" name="captcha" style="text-transform:uppercase;"/>
+                <img id="vdimgck" align="absmiddle" src="/verify" onClick="/verify/" style="cursor: pointer;" alt="看不清？点击更换" width="70" height="30" />
+                <a href="#" onClick="changeAuthCode();">看不清？ </a></dd>
+            <dt>&nbsp;</dt>
+            <dd><button type="submit" name="sm1" class="login-btn" onclick="this.form.submit();">登录</button></dd>
+        </dl>
+    </form>
+</div>
+</div>
+
+</body>
+</html>

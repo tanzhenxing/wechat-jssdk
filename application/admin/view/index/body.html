@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台首页面板</title>
+    <base target="_self">
+    <link rel="stylesheet" type="text/css" href="/resource/admin/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="/resource/admin/css/indexbody.css" />
+    <link href="/resource/admin/images/style1/style.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" src="/resource/js/dedeajax2.js"></script>
+    <script type="text/javascript" src="/resource/js/jquery/jquery.js" ></script>
+    <script language="javascript" src="/resource/js/jquery/ui.core.js"></script>
+    <script language="javascript" src="/resource/js/jquery/ui.draggable.js"></script>
+    <script language="javascript" src="/resource/js/jquery/ui.sortable.js"></script>
+    <script language="javascript" src="/resource/admin/js/jquery.json-2.2.min.js"></script>
+    <script language="javascript" src="/resource/admin/js/indexbody.js"></script>
+    <script language="javascript" src="/resource/admin/js/drag.js"></script>
+</head>
+<body leftmargin="8" topmargin='8' bgcolor="#FFFFFF">
+<div style="min-width:780px">
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <div style='float:left'>
+                    欢迎使用专业的PHP网站管理系统，轻松建站的首选利器</div>
+                <div id='' style='float:right;padding-right:8px;'>
+                    <!--  //保留位置（顶右）  -->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td height="1" background="/resource/admin/images/sp_bg.gif" style='padding:0px'></td>
+        </tr>
+    </table>
+    <div id='mainmsg'>
+        <div class="column" id="column1"><!--左侧开始-->
+            <dl class='dbox' id="item3">
+                <dt class='lside'>
+                    <div class='l'>快捷操作</div>
+                    <div class='r'><a href='#' onClick="AddNew()"><b>【新增】</b></a><a href='#' onClick="ListAll()"><b>【管理】</b></a></div>
+                </dt>
+                <dd>
+                    <div id='quickmenu'>
+                        <div class='icoitem' style='background:url(/resource/admin/images/addnews.gif) 10px 3px no-repeat;'><a href='content_list.php'>文档列表</a></div>
+                        <div class='icoitem' style='background:url(/resource/admin/images/menuarrow.gif) 10px 3px no-repeat;'><a href='feedback_main.php'>评论管理</a></div>
+                        <div class='icoitem' style='background:url(/resource/admin/images/manage1.gif) 10px 3px no-repeat;'><a href='public_guide.php'>内容发布</a></div>
+                        <div class='icoitem' style='background:url(/resource/admin/images/file_dir.gif) 10px 3px no-repeat;'><a href='catalog_main.php'>栏目管理</a></div>
+                        <div class='icoitem' style='background:url(/resource/admin/images/manage1.gif) 10px 3px no-repeat;'><a href='sys_info.php'>修改参数</a></div>
+                    </div>
+                </dd>
+
+            </dl><!--快捷操作结束-->
+
+
+        </div><!--左侧结束-->
+        <div class="column" id="column2" ><!-- //右边的快捷消息开始 -->
+            <dl class='dbox' id="item7">
+                <dt class='lside'><div class='l'>最新文档</div></dt>
+                <dd id='listNews'>
+                    <table width="100%" class="dboxtable">
+                        <tr>
+                            <td class='nline'  style="text-align:left">
+                                暂无新增内容
+                            </td>
+                        </tr>
+                    </table>
+                </dd>
+            </dl><!--最新文档结束-->
+
+        </div>
+    </div>
+    <br style='clear:both'/>
+    <!-- //底部 -->
+    <div align="center" class="footer">
+        Copyright &copy; 2004-2018 版权所有
+    </div>
+
+    <!--  下面是隐藏的项目  -->
+    <div id='loaddiv' style='display:none'>
+        <p align='center' style='padding-top:200px'><img src='/resource/admin/images/loadinglit.gif' /> 请稍后，正在下载更新文件列表...</p>
+    </div>
+    <div id="editTab">
+        <span id='editTabBody'>请稍候，正在载入...</span>
+    </div>
+    <div id="addTab">
+        <form name='addform' action='/admin/index/index'>
+            <input type='hidden' name='dopost' value='addnew' />
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td height='28' colspan='3' background="/resource/admin/images/tbg.gif">
+                        <div style='float:left'><b>增加快捷操作项</b></div>
+                        <div style='float:right;padding:3px 10px 0 0;'>
+                            <a href="javascript:CloseTab('addTab')"><img src="/resource/admin/images/close.gif" width="12" height="12" border="0" /></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr><td style="height:6px;font-size:1px;border-top:1px solid #8DA659" colspan="2">&nbsp;</td></tr>
+                <tr>
+                    <td width="20%" height="28" align="right">链接标题：</td>
+                    <td width="70%">
+                        <input name="title" type="text" id="title" class='pubinputs' style="width:255px;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="28" width="20%" align="right">ICO图片：</td>
+                    <td width="70%">
+                        <input name="ico" type="text" id="ico" class='pubinputs' style="width:255px;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="28" width="20%" align="right">链接网址：</td>
+                    <td width="70%">
+                        <input name="link" type="text" id="link" class='pubinputs' style="width:255px;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="45">&nbsp;</td>
+                    <td>
+                        <input type="submit" name="Submit" value="保存项目" class="np coolbg" style="width:80px;cursor:pointer" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

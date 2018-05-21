@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>重复文档检测</title>
+    <link href="/resource/admin/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+<body background='/resource/admin/images/allbg.gif' leftmargin='8' topmargin='8'>
+<div class="bodytitle">
+    <div class="bodytitleleft"></div>
+    <div class="bodytitletxt" style="padding-left:10px;">批量管理</div>
+</div>
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" style="	background:#CFCFCF;">
+    <form action="article_test_same.php" name="form1" target="stafrm">
+        <input type='hidden' name='dopost' value='analyse'>
+        <tr>
+            <td height="20" bgcolor="#EDF9D5" background="/resource/admin/images/tbg.gif">
+                <table width="98%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td width="30%" height="18"><strong>&nbsp;重复文档检测：</strong></td>
+                        <td width="70%" align="right">&nbsp;</td>
+                    </tr>
+                </table></td>
+        </tr>
+        <tr>
+            <td height="31" align="center" bgcolor="#FFFFFF">
+                <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td width="20%" height="30" align="left">频道类型：</td>
+                        <td align="left">
+                            <select name="channelid">
+                                <option value=1>普通文章</option><option value=2>图片集</option><option value=3>软件</option><option value=-1>专题</option><option value=6>商品</option><option value=-8>分类信息</option>              </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="20%" height="30" align="left">删除选项：</td>
+                        <td align="left">
+                            <input name="deltype" type="radio"  value="delnew" class='np' checked='1'/>
+                            保留最旧的一条
+                            <input type="radio" name="deltype" value="delold" class='np' />
+                            保留最新的一条
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="30" align="left">每排列出记录：</td>
+                        <td align="left"><input name="pagesize" type="text" id="pagesize" value="100" size="10">
+                            条</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td height="31" bgcolor="#ffffff" align="center" style="padding-top:6px">
+                <input type="submit" name="Submit" value="分析标题重复的文档" class="np coolbg"/>
+            </td>
+        </tr>
+    </form>
+    <tr bgcolor="#F9FCEF">
+        <td height="30">
+            &nbsp; <strong>结果：</strong>
+        </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+        <td id="mtd">
+            <div id='mdv' style='width:100%;height:420px;'>
+                <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
+            </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

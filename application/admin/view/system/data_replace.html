@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据批量替换</title>
+    <script language='javascript' src='/resource/admin/js/main.js'></script>
+    <script language='javascript' src='/resource/js/dedeajax2.js'></script>
+    <script language='javascript'>
+        function ShowFields(){
+            var exptable = $DE('exptable').options[$DE('exptable').selectedIndex].value;
+            var queryUrl = "sys_data_replace.php?exptable="+exptable+"&action=getfields";
+            var myajax = new DedeAjax($DE('fields'),true,true,'','x','...');
+            myajax.SendGet(queryUrl);
+        }
+        function CheckSubmit(){
+            if($DE('rpfield').value==""){
+                alert("你选择的操作为手工指定字段，但你并没指定！");
+                return false;
+            }
+            if($DE('rpstring').value==""){
+                alert("你没指定要替换的字符串！");
+                return false;
+            }
+            return true;
+        }
+        function pf(v){
+            $DE('rpfield').value = v;
+        }
+
+    </script>
+    <link href="/resource/admin/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="bodytitle">
+    <div class="bodytitleleft"></div>
+    <div class="bodytitletxt" style="padding-left:10px;">批量管理</div>
+</div>
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" style="	background:#CFCFCF;">
+    <form action="system/data_replace_update" name="form1" method="post" target="stafrm" onSubmit="return CheckSubmit()">
+        <input type='hidden' name='action' value='apply'>
+        <tr>
+            <td height="28" bgcolor="#EDF9D5" background="/resource/admin/images/tbg.gif" style="padding-left:10px;">
+                <strong>数据库内容替换：</strong>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#FFFFFF">
+                <table width="100%" border="0" cellpadding="2" cellspacing="2">
+                    <tr bgcolor="#FFFFFF">
+                        <td colspan="2" style="line-height:180%">
+                            <img src="/resource/admin/images/help.gif" width="16" height="16" /> 程序用于批量替换数据库中某字段的内容，此操作极为危险，请小心使用。
+                        </td>
+                    </tr>
+
+                    <tr id='datasel'>
+                        <td width="15%" height="66">&nbsp;选择数据表与字段：</td>
+                        <td> <table width="98%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td id="tables">
+                                    <select name='exptable' id='exptable' size='10' style='width:60%' onchange='ShowFields()'>
+                                        <option value='dede_addonarticle'>dede_addonarticle</option>
+                                        <option value='dede_addonimages'>dede_addonimages</option>
+                                        <option value='dede_addoninfos'>dede_addoninfos</option>
+                                        <option value='dede_addonshop'>dede_addonshop</option>
+                                        <option value='dede_addonsoft'>dede_addonsoft</option>
+                                        <option value='dede_addonspec'>dede_addonspec</option>
+                                        <option value='dede_admin'>dede_admin</option>
+                                        <option value='dede_admintype'>dede_admintype</option>
+                                        <option value='dede_advancedsearch'>dede_advancedsearch</option>
+                                        <option value='dede_arcatt'>dede_arcatt</option>
+                                        <option value='dede_arccache'>dede_arccache</option>
+                                        <option value='dede_archives'>dede_archives</option>
+                                        <option value='dede_arcmulti'>dede_arcmulti</option>
+                                        <option value='dede_arcrank'>dede_arcrank</option>
+                                        <option value='dede_arctiny'>dede_arctiny</option>
+                                        <option value='dede_arctype'>dede_arctype</option>
+                                        <option value='dede_area'>dede_area</option>
+                                        <option value='dede_channeltype'>dede_channeltype</option>
+                                        <option value='dede_cloud_storage'>dede_cloud_storage</option>
+                                        <option value='dede_co_htmls'>dede_co_htmls</option>
+                                        <option value='dede_co_mediaurls'>dede_co_mediaurls</option>
+                                        <option value='dede_co_note'>dede_co_note</option>
+                                        <option value='dede_co_onepage'>dede_co_onepage</option>
+                                        <option value='dede_co_urls'>dede_co_urls</option>
+                                        <option value='dede_diyforms'>dede_diyforms</option>
+                                        <option value='dede_dl_log'>dede_dl_log</option>
+                                        <option value='dede_downloads'>dede_downloads</option>
+                                        <option value='dede_erradd'>dede_erradd</option>
+                                        <option value='dede_feedback'>dede_feedback</option>
+                                        <option value='dede_flink'>dede_flink</option>
+                                        <option value='dede_flinktype'>dede_flinktype</option>
+                                        <option value='dede_freelist'>dede_freelist</option>
+                                        <option value='dede_homepageset'>dede_homepageset</option>
+                                        <option value='dede_keywords'>dede_keywords</option>
+                                        <option value='dede_log'>dede_log</option>
+                                        <option value='dede_member'>dede_member</option>
+                                        <option value='dede_member_company'>dede_member_company</option>
+                                        <option value='dede_member_feed'>dede_member_feed</option>
+                                        <option value='dede_member_flink'>dede_member_flink</option>
+                                        <option value='dede_member_friends'>dede_member_friends</option>
+                                        <option value='dede_member_group'>dede_member_group</option>
+                                        <option value='dede_member_guestbook'>dede_member_guestbook</option>
+                                        <option value='dede_member_model'>dede_member_model</option>
+                                        <option value='dede_member_msg'>dede_member_msg</option>
+                                        <option value='dede_member_operation'>dede_member_operation</option>
+                                        <option value='dede_member_person'>dede_member_person</option>
+                                        <option value='dede_member_pms'>dede_member_pms</option>
+                                        <option value='dede_member_qq'>dede_member_qq</option>
+                                        <option value='dede_member_snsmsg'>dede_member_snsmsg</option>
+                                        <option value='dede_member_space'>dede_member_space</option>
+                                        <option value='dede_member_stow'>dede_member_stow</option>
+                                        <option value='dede_member_stowtype'>dede_member_stowtype</option>
+                                        <option value='dede_member_tj'>dede_member_tj</option>
+                                        <option value='dede_member_type'>dede_member_type</option>
+                                        <option value='dede_member_vhistory'>dede_member_vhistory</option>
+                                        <option value='dede_member_wechat'>dede_member_wechat</option>
+                                        <option value='dede_moneycard_record'>dede_moneycard_record</option>
+                                        <option value='dede_moneycard_type'>dede_moneycard_type</option>
+                                        <option value='dede_mtypes'>dede_mtypes</option>
+                                        <option value='dede_multiserv_config'>dede_multiserv_config</option>
+                                        <option value='dede_myad'>dede_myad</option>
+                                        <option value='dede_myadtype'>dede_myadtype</option>
+                                        <option value='dede_mytag'>dede_mytag</option>
+                                        <option value='dede_payment'>dede_payment</option>
+                                        <option value='dede_plus'>dede_plus</option>
+                                        <option value='dede_plus_mda_setting'>dede_plus_mda_setting</option>
+                                        <option value='dede_plus_seoinfo'>dede_plus_seoinfo</option>
+                                        <option value='dede_purview'>dede_purview</option>
+                                        <option value='dede_pwd_tmp'>dede_pwd_tmp</option>
+                                        <option value='dede_ratings'>dede_ratings</option>
+                                        <option value='dede_scores'>dede_scores</option>
+                                        <option value='dede_search_cache'>dede_search_cache</option>
+                                        <option value='dede_search_keywords'>dede_search_keywords</option>
+                                        <option value='dede_sgpage'>dede_sgpage</option>
+                                        <option value='dede_shops_delivery'>dede_shops_delivery</option>
+                                        <option value='dede_shops_orders'>dede_shops_orders</option>
+                                        <option value='dede_shops_products'>dede_shops_products</option>
+                                        <option value='dede_shops_userinfo'>dede_shops_userinfo</option>
+                                        <option value='dede_sms'>dede_sms</option>
+                                        <option value='dede_softconfig'>dede_softconfig</option>
+                                        <option value='dede_sphinx'>dede_sphinx</option>
+                                        <option value='dede_stepselect'>dede_stepselect</option>
+                                        <option value='dede_sys_enum'>dede_sys_enum</option>
+                                        <option value='dede_sys_module'>dede_sys_module</option>
+                                        <option value='dede_sys_set'>dede_sys_set</option>
+                                        <option value='dede_sys_task'>dede_sys_task</option>
+                                        <option value='dede_sysconfig'>dede_sysconfig</option>
+                                        <option value='dede_tagindex'>dede_tagindex</option>
+                                        <option value='dede_taglist'>dede_taglist</option>
+                                        <option value='dede_uploads'>dede_uploads</option>
+                                        <option value='dede_verifies'>dede_verifies</option>
+                                        <option value='dede_vote'>dede_vote</option>
+                                        <option value='dede_vote_member'>dede_vote_member</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id='fields'></td>
+                            </tr>
+                            <tr>
+                                <td height="28"> 要替换的字段：
+                                    <input name="rpfield" type="text" id="rpfield" class="alltxt" />
+                                </td>
+                            </tr>
+                        </table></td>
+                    </tr>
+                    <tr bgcolor="#FBFCE2">
+                        <td>&nbsp;替换方式：</td>
+                        <td>
+                            <input name="rptype" type="radio"  id="ot1" value="replace" checked='1' class='np' />
+                            普通替换
+                            <input type="radio" name="rptype"  id="ot2"  value="regex" class='np' />
+                            正则表达式 主键字段：
+                            <input name="keyfield" type="text" id="keyfield" size="12"  class="alltxt"/>
+                            （正则模式必须指定）
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;被替换内容：</td>
+                        <td><textarea name="rpstring" id="rpstring" class="alltxt" style="width:60%;height:50px"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;替换为：</td>
+                        <td><textarea name="tostring" id="tostring" class="alltxt" style="width:60%;height:50px"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td height="29">&nbsp;替换条件：</td>
+                        <td><input name="condition" type="text" id="condition" style="width:45%" class="alltxt" />
+                            (空完全替换)</td>
+                    </tr>
+                    <tr>
+                        <td height="29">&nbsp;安全确认码：</td>
+                        <td>
+                            <table width="300"  border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="90">
+                                        <input type="text" name="validate" class="alltxt" style="width:80px;text-transform: uppercase;" />
+                                    </td>
+                                    <td>
+                                        <img src='/verify' width="80" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td height="31" bgcolor="#ffffff" align="center">
+                <input type="submit" name="Submit" value="开始替换数据" class="np coolbg" />
+            </td>
+        </tr>
+    </form>
+    <tr bgcolor="#F9FCEF">
+        <td height="20" > <table width="100%">
+            <tr>
+                <td width="74%"><strong>结果：</strong></td>
+                <td width="26%" align="right">
+                    <script language='javascript'>
+                        function ResizeDiv(obj,ty)
+                        {
+                            if(ty=="+") document.all[obj].style.pixelHeight += 50;
+                            else if(document.all[obj].style.pixelHeight>80) document.all[obj].style.pixelHeight = document.all[obj].style.pixelHeight - 50;
+                        }
+                    </script>
+                    [<a href='#' onClick="ResizeDiv('mdv','+');">增大</a>] [<a href='#' onClick="ResizeDiv('mdv','-');">缩小</a>]          </td>
+            </tr>
+        </table></td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+        <td id="mtd"> <div id='mdv' style='width:100%;height:250px;'>
+            <iframe name="stafrm" frameborder="0" id="stafrm" width="100%" height="100%"></iframe>
+        </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
