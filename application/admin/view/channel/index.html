@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内容模型管理</title>
+    <link href="/resource/admin/css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body background='/resource/admin/images/allbg.gif' leftmargin='8' topmargin='8'>
+<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6">
+    <tr>
+        <td height="28" colspan="7" background="/resource/admin/images/tbg.gif">
+            <table width='96%' cellpadding='0' cellspacing='0'>
+                <tr>
+                    <td width='20%' style="padding-left:10px;"><b>内容模型管理</b></td>
+                    <td align='right'>
+                        <a href="mychannel_add.php" class='np coolbg'>增加新模型</a>
+                        <a href="mychannel_edit.php?dopost=exportin" class='np coolbg'>导入模型</a>
+                        <a href="stepselect_main.php" class='np coolbg'>联动类别管理</a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FBFCE2" height="28">
+        <td width="6%">id号</td>
+        <td width="16%">频道名称</td>
+        <td width="12%">识别id</td>
+        <td width="20%">附加表</td>
+        <td width="12%">状态</td>
+        <td width="8%">模型</td>
+        <td>管理</td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24"
+        onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>6</td>
+        <td>
+            <a href='mychannel_edit.php?id=6&dopost=edit'><u>商品</u></a>
+        </td>
+        <td>shop</td>
+        <td>dede_addonshop</td>
+        <td>启用  &gt; <a href='mychannel_edit.php?dopost=hide&id=6'><u>禁用</u></a></td>
+        <td>自动</td>
+        <td>
+            <a href='mychannel_edit.php?id=6&dopost=copystart'><img src='/resource/admin/images/gtk-copy.png' title='复制' alt='复制' /></a>
+            <a href='mychannel_edit.php?id=6&dopost=gettemplets'><img src='/resource/admin/images/gtk-tmp.png' title='模板' alt='模板' /></a>
+            <a href='mychannel_edit.php?id=6&dopost=export'><img src='/resource/admin/images/gtk-ex.png' title='导出' alt='导出' /></a>
+            <a href='mychannel_edit.php?id=6&dopost=edit'><img src='/resource/admin/images/gtk-edit.png' alt='更改' title='更改' /></a>
+            <a href='mychannel_edit.php?mid=6&dopost=modifysearch'><img src='/resource/admin/images/gtk-search.png' alt='自定义搜索' title='自定义搜索' /></a>
+            <a href='mychannel_edit.php?id=6&dopost=delete'><img src='/resource/admin/images/gtk-del.png' alt='删除' title='删除' /></a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24"
+        onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>3</td>
+        <td>
+            <a href='mychannel_edit.php?id=3&dopost=edit'><u>软件</u></a>
+        </td>
+        <td>soft</td>
+        <td>dede_addonsoft</td>
+        <td>启用  &gt; <a href='mychannel_edit.php?dopost=hide&id=3'><u>禁用</u></a></td>
+        <td>系统</td>
+        <td>
+            <a href='mychannel_edit.php?id=3&dopost=copystart'><img src='/resource/admin/images/gtk-copy.png' title='复制' alt='复制' /></a>
+            <a href='mychannel_edit.php?id=3&dopost=gettemplets'><img src='/resource/admin/images/gtk-tmp.png' title='模板' alt='模板' /></a>
+            <a href='mychannel_edit.php?id=3&dopost=export'><img src='/resource/admin/images/gtk-ex.png' title='导出' alt='导出' /></a>
+            <a href='mychannel_edit.php?id=3&dopost=edit'><img src='/resource/admin/images/gtk-edit.png' alt='更改' title='更改' /></a>
+            <a href='mychannel_edit.php?mid=3&dopost=modifysearch'><img src='/resource/admin/images/gtk-search.png' alt='自定义搜索' title='自定义搜索' /></a>
+            <a href='mychannel_edit.php?id=3&dopost=delete'><img src='/resource/admin/images/gtk-del.png' alt='删除' title='删除' /></a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24"
+        onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>2</td>
+        <td>
+            <a href='mychannel_edit.php?id=2&dopost=edit'><u>图片集</u></a>
+        </td>
+        <td>image</td>
+        <td>dede_addonimages</td>
+        <td>启用  &gt; <a href='mychannel_edit.php?dopost=hide&id=2'><u>禁用</u></a></td>
+        <td>系统</td>
+        <td>
+            <a href='mychannel_edit.php?id=2&dopost=copystart'><img src='/resource/admin/images/gtk-copy.png' title='复制' alt='复制' /></a>
+            <a href='mychannel_edit.php?id=2&dopost=gettemplets'><img src='/resource/admin/images/gtk-tmp.png' title='模板' alt='模板' /></a>
+            <a href='mychannel_edit.php?id=2&dopost=export'><img src='/resource/admin/images/gtk-ex.png' title='导出' alt='导出' /></a>
+            <a href='mychannel_edit.php?id=2&dopost=edit'><img src='/resource/admin/images/gtk-edit.png' alt='更改' title='更改' /></a>
+            <a href='mychannel_edit.php?mid=2&dopost=modifysearch'><img src='/resource/admin/images/gtk-search.png' alt='自定义搜索' title='自定义搜索' /></a>
+            <a href='mychannel_edit.php?id=2&dopost=delete'><img src='/resource/admin/images/gtk-del.png' alt='删除' title='删除' /></a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24"
+        onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>1</td>
+        <td>
+            <a href='mychannel_edit.php?id=1&dopost=edit'><u>普通文章</u></a>
+        </td>
+        <td>article</td>
+        <td>dede_addonarticle</td>
+        <td>启用  &gt; <a href='mychannel_edit.php?dopost=hide&id=1'><u>禁用</u></a></td>
+        <td>系统</td>
+        <td>
+            <a href='mychannel_edit.php?id=1&dopost=copystart'><img src='/resource/admin/images/gtk-copy.png' title='复制' alt='复制' /></a>
+            <a href='mychannel_edit.php?id=1&dopost=gettemplets'><img src='/resource/admin/images/gtk-tmp.png' title='模板' alt='模板' /></a>
+            <a href='mychannel_edit.php?id=1&dopost=export'><img src='/resource/admin/images/gtk-ex.png' title='导出' alt='导出' /></a>
+            <a href='mychannel_edit.php?id=1&dopost=edit'><img src='/resource/admin/images/gtk-edit.png' alt='更改' title='更改' /></a>
+            <a href='mychannel_edit.php?mid=1&dopost=modifysearch'><img src='/resource/admin/images/gtk-search.png' alt='自定义搜索' title='自定义搜索' /></a>
+            <a href='mychannel_edit.php?id=1&dopost=delete'><img src='/resource/admin/images/gtk-del.png' alt='删除' title='删除' /></a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24"
+        onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>-1</td>
+        <td>
+            <a href='mychannel_edit.php?id=-1&dopost=edit'><u>专题</u></a>
+        </td>
+        <td>spec</td>
+        <td>dede_addonspec</td>
+        <td>固定项目</td>
+        <td>系统</td>
+        <td>
+            <a href='mychannel_edit.php?id=-1&dopost=copystart'><img src='/resource/admin/images/gtk-copy.png' title='复制' alt='复制' /></a>
+            <a href='mychannel_edit.php?id=-1&dopost=gettemplets'><img src='/resource/admin/images/gtk-tmp.png' title='模板' alt='模板' /></a>
+            <a href='mychannel_edit.php?id=-1&dopost=export'><img src='/resource/admin/images/gtk-ex.png' title='导出' alt='导出' /></a>
+            <a href='mychannel_edit.php?id=-1&dopost=edit'><img src='/resource/admin/images/gtk-edit.png' alt='更改' title='更改' /></a>
+            <a href='mychannel_edit.php?mid=-1&dopost=modifysearch'><img src='/resource/admin/images/gtk-search.png' alt='自定义搜索' title='自定义搜索' /></a>
+            <a href='mychannel_edit.php?id=-1&dopost=delete'><img src='/resource/admin/images/gtk-del.png' alt='删除' title='删除' /></a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24"
+        onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>-8</td>
+        <td>
+            <a href='mychannel_edit.php?id=-8&dopost=edit'><u>分类信息</u></a>
+        </td>
+        <td>infos</td>
+        <td>dede_addoninfos</td>
+        <td>启用  &gt; <a href='mychannel_edit.php?dopost=hide&id=-8'><u>禁用</u></a></td>
+        <td>自动</td>
+        <td>
+            <a href='mychannel_edit.php?id=-8&dopost=copystart'><img src='/resource/admin/images/gtk-copy.png' title='复制' alt='复制' /></a>
+            <a href='mychannel_edit.php?id=-8&dopost=gettemplets'><img src='/resource/admin/images/gtk-tmp.png' title='模板' alt='模板' /></a>
+            <a href='mychannel_edit.php?id=-8&dopost=export'><img src='/resource/admin/images/gtk-ex.png' title='导出' alt='导出' /></a>
+            <a href='mychannel_edit.php?id=-8&dopost=edit'><img src='/resource/admin/images/gtk-edit.png' alt='更改' title='更改' /></a>
+            <a href='mychannel_edit.php?mid=-8&dopost=modifysearch'><img src='/resource/admin/images/gtk-search.png' alt='自定义搜索' title='自定义搜索' /></a>
+            <a href='mychannel_edit.php?id=-8&dopost=delete'><img src='/resource/admin/images/gtk-del.png' alt='删除' title='删除' /></a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#F9FCEF" height="28">
+        <td colspan="7">
+            <span>共 1 页/6条记录</span>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#ffffff" height="32">
+        <td colspan="7">
+            图标说明：
+            <img src='/resource/admin/images/gtk-copy.png' title='复制' alt='复制' /> 复制
+            <img src='/resource/admin/images/gtk-tmp.png' title='模板' alt='模板' /> 模板
+            <img src='/resource/admin/images/gtk-ex.png' title='导出' alt='导出' /> 导出
+            <img src='/resource/admin/images/gtk-edit.png' alt='更改' title='更改' /> 修改
+            <img src='/resource/admin/images/gtk-search.png' alt='自定义搜索' title='自定义搜索' /> 自定义搜索
+            <img src='/resource/admin/images/gtk-del.png' alt='删除' title='删除' /> 删除
+        </td>
+    </tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

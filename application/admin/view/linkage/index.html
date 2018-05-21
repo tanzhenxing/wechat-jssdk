@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>联动枚举管理</title>
+    <link href="/resource/admin/css/base.css" rel="stylesheet" type="text/css">
+    <style>
+        li { float:left; padding-right:8px; line-height:24px; }
+        .abt { width:90%; border:1px #ffffff solid}
+        #edsta {
+            position:absolute;
+            top:73px; left:111px;
+            width: 278px; height: 199px;
+            background-color: #F9FCEF;
+            border: 1px solid #dedede;
+            display:none;
+            padding:3px;
+        }
+        #edsta div { margin:5px; }
+    </style>
+    <SCRIPT LANGUAGE="JavaScript" src="/resource/js/dedeajax2.js"></SCRIPT>
+    <SCRIPT LANGUAGE="JavaScript">
+        <!--
+        var loadhtml = "<center><img src='/resource/admin/images/loadinglit.gif' style='padding:30px' /></center>";
+        function updateItem(aid)
+        {
+            var upenumf = document.getElementById('upenumf');
+            upenumf.ename.value = $DE('ename'+aid).value;
+            upenumf.disorder.value = $DE('disorder'+aid).value;
+            upenumf.aid.value = aid;
+            upenumf.submit();
+        }
+
+        function GetSelType()
+        {
+            var selvalue = $DE('egroup1').options[$DE('egroup1').selectedIndex].value;
+            return selvalue;
+        }
+
+        function AddType()
+        {
+            var myajax = new DedeAjax($DE('edsta'));
+            $DE('edsta').style.display = 'block';
+            myajax.SendGet('stepselect_main.php?action=addnew',true,true,'','系统错误，无法获取数据！',loadhtml);
+        }
+
+        function AddEnum()
+        {
+            var id = GetSelType();
+            if(id==0) {
+                alert("必须选择一个类别！");
+                return false;
+            }
+            var myajax = new DedeAjax($DE('edsta'));
+            $DE('edsta').style.display = 'block';
+            myajax.SendGet('stepselect_main.php?action=addenum&id='+id,true,true,'','系统错误，无法获取数据！',loadhtml);
+        }
+
+        function EditType()
+        {
+            var id = GetSelType();
+            if(id==0) {
+                alert("必须选择一个类别！");
+                return false;
+            }
+            var myajax = new DedeAjax($DE('edsta'));
+            $DE('edsta').style.display = 'block';
+            myajax.SendGet('stepselect_main.php?action=edit&id='+id,true,true,'','系统错误，无法获取数据！',loadhtml);
+        }
+
+        function ViewType()
+        {
+            var id = GetSelType();
+            if(id==0) {
+                alert("必须选择一个类别！");
+                return false;
+            }
+            var myajax = new DedeAjax($DE('edsta'));
+            $DE('edsta').style.display = 'block';
+            myajax.SendGet('stepselect_main.php?action=view&id='+id,true,true,'','系统错误，无法获取数据！',loadhtml);
+        }
+
+        function DelType()
+        {
+            if(window.confirm("你确实要删除这个分类吗？")==false) return false;
+            var id = GetSelType();
+            if(id==0) {
+                alert("必须选择一个类别！");
+                return false;
+            }
+            location.href='stepselect_main.php?action=del&id='+id;
+        }
+
+        function CloseTWin()
+        {
+            $DE('edsta').innerHTML = loadhtml;
+            $DE('edsta').style.display='none';
+        }
+
+        function ChangePage(sobj)
+        {
+            var ntxt = sobj.options[sobj.selectedIndex].text;
+            if(sobj.options[sobj.selectedIndex].value==0)
+            {
+                location.href='stepselect_main.php';
+            }
+            else
+            {
+                var ns = ntxt.split('|');
+                location.href='stepselect_main.php?egroup='+ns[0];
+            }
+        }
+
+        function TogSel()
+        {
+            var ems = document.getElementsByName('ids[]');
+            for(i=0; i < ems.length; i++)
+            {
+                if(ems[i].checked==false) ems[i].checked=true;
+                else ems[i].checked=false;
+            }
+        }
+
+        function DelSel()
+        {
+            if(window.confirm("你确实要删除这些分类吗？")) document.form1.submit();
+        }
+
+        function ChangePage2(sobj)
+        {
+            var nv = sobj.options[sobj.selectedIndex].value;
+            if(sobj.options[sobj.selectedIndex].value==0)
+            {
+                location.href='stepselect_main.php?egroup=';
+            }
+            else
+            {
+                location.href='stepselect_main.php?egroup=&topvalue='+nv;
+            }
+        }
+
+        //-->
+    </SCRIPT>
+</head>
+<body background='/resource/admin/images/allbg.gif' leftmargin='8' topmargin='8'>
+<div id='edsta'><center><img src='/resource/admin/images/loadinglit.gif' /></center></div>
+<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#cfcfcf" style="margin-bottom:6px">
+    <tr>
+        <td height="28" background="/resource/admin/images/wbg.gif" colspan="6" style="padding-left:10px;">
+            <div style="float:left"><b>·联动枚举组管理</b></div>
+            <div style="float:right"><a href='stepselect_main.php?action=upallcache'>[<u>更新所有枚举缓存</u>]</a>&nbsp;</div>
+        </td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#ffffff" style="padding:6px;"><table width="800" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td width="85"><strong>请选择组别：</strong></td>
+                <td width="264">
+                    <select name="egroup1" id="egroup1" style="width:90%;" onChange="ChangePage(this)">
+                        <option value='0'>--所有组--</option>
+                        <option value='15' >infotype|信息类型</option>
+                        <option value='14' >nativeplace|地区</option>
+                        <option value='13' >vocation|行业</option>
+                        <option value='12'  style='color:#999999' >system|系统缓存标识</option>
+                        <option value='11'  style='color:#999999' >star|星座</option>
+                        <option value='10'  style='color:#999999' >smoke|是否抽烟</option>
+                        <option value='9'  style='color:#999999' >marital|婚姻</option>
+                        <option value='8'  style='color:#999999' >income|收入</option>
+                        <option value='7'  style='color:#999999' >house|住房</option>
+                        <option value='6'  style='color:#999999' >education|教育程度</option>
+                        <option value='5'  style='color:#999999' >drink|是否饮酒</option>
+                        <option value='4'  style='color:#999999' >datingtype|交友</option>
+                        <option value='3'  style='color:#999999' >cosize|公司规模</option>
+                        <option value='2'  style='color:#999999' >bodytype|体型</option>
+                        <option value='1'  style='color:#999999' >blood|血型</option>
+                    </select>
+                </td>
+                <td width="350">
+                    <input type="button" name="gedit" id="gedit" value="修改" class="np coolbg" onClick="EditType()" />
+                    <input type="button" name="gdel" id="gdel" value="删除" class="np coolbg" onClick="DelType()" />
+                    <input type="button" name="gview" id="gview" value="预览" class="np coolbg" onClick="ViewType()" />
+                </td>
+                <td align="right">
+                    <input type="button" name="addnew" id="addnew" value="新增类别组" class="np coolbg" onClick="AddType()" />
+                </td>
+            </tr>
+            <tr><td colspan='3' height='24' style='color:#333333'><img src='/resource/admin/images/help.gif' /> 灰色字的为系统内置枚举，您是不能对它进行删除修改操作的，但可以添加或修改它的元素。</td></tr>
+        </table>
+        </td>
+    </tr>
+</table>
+<table width="98%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#D6D6D6">
+    <tr>
+        <td height="28" background="/resource/admin/images/tbg.gif" colspan="8">
+            <div style="float:left">
+                &nbsp;·<a href='stepselect_main.php'><b><u>枚举组列表</u></b></a>
+            </div>
+            <div style="float:right"></div>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FBFCE2" height="24">
+        <td width="6%">选择</td>
+        <td width="6%">编号</td>
+        <td width="28%">组类别名</td>
+        <td width="10%">级数</td>
+        <td width="10%">系统</td>
+        <td width="15%">缓存组名</td>
+        <td>操作</td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='15' class='np' /></td>
+        <td> 15 </td>
+        <td> <a href='stepselect_main.php?egroup=infotype'><u>信息类型</u></a> </td>
+        <td>
+            三级选择        </td>
+        <td> 否 </td>
+        <td>infotype</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=infotype'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=infotype'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='14' class='np' /></td>
+        <td> 14 </td>
+        <td> <a href='stepselect_main.php?egroup=nativeplace'><u>地区</u></a> </td>
+        <td>
+            三级选择        </td>
+        <td> 否 </td>
+        <td>nativeplace</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=nativeplace'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=nativeplace'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='13' class='np' /></td>
+        <td> 13 </td>
+        <td> <a href='stepselect_main.php?egroup=vocation'><u>行业</u></a> </td>
+        <td>
+            三级选择        </td>
+        <td> 否 </td>
+        <td>vocation</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=vocation'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=vocation'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='12' class='np' /></td>
+        <td> 12 </td>
+        <td> <a href='stepselect_main.php?egroup=system'><u>系统缓存标识</u></a> </td>
+        <td>
+            二级选择        </td>
+        <td> 是 </td>
+        <td>system</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=system'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=system'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='11' class='np' /></td>
+        <td> 11 </td>
+        <td> <a href='stepselect_main.php?egroup=star'><u>星座</u></a> </td>
+        <td>
+            二级选择        </td>
+        <td> 是 </td>
+        <td>star</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=star'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=star'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='10' class='np' /></td>
+        <td> 10 </td>
+        <td> <a href='stepselect_main.php?egroup=smoke'><u>是否抽烟</u></a> </td>
+        <td>
+            二级选择        </td>
+        <td> 是 </td>
+        <td>smoke</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=smoke'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=smoke'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='9' class='np' /></td>
+        <td> 9 </td>
+        <td> <a href='stepselect_main.php?egroup=marital'><u>婚姻</u></a> </td>
+        <td>
+            二级选择        </td>
+        <td> 是 </td>
+        <td>marital</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=marital'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=marital'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='8' class='np' /></td>
+        <td> 8 </td>
+        <td> <a href='stepselect_main.php?egroup=income'><u>收入</u></a> </td>
+        <td>
+            二级选择        </td>
+        <td> 是 </td>
+        <td>income</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=income'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=income'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='7' class='np' /></td>
+        <td> 7 </td>
+        <td> <a href='stepselect_main.php?egroup=house'><u>住房</u></a> </td>
+        <td>
+            二级选择        </td>
+        <td> 是 </td>
+        <td>house</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=house'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=house'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='6' class='np' /></td>
+        <td> 6 </td>
+        <td> <a href='stepselect_main.php?egroup=education'><u>教育程度</u></a> </td>
+        <td>
+            二级选择        </td>
+        <td> 是 </td>
+        <td>education</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=education'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=education'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='5' class='np' /></td>
+        <td> 5 </td>
+        <td> <a href='stepselect_main.php?egroup=drink'><u>是否饮酒</u></a> </td>
+        <td>
+            二级选择        </td>
+        <td> 是 </td>
+        <td>drink</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=drink'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=drink'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='4' class='np' /></td>
+        <td> 4 </td>
+        <td> <a href='stepselect_main.php?egroup=datingtype'><u>交友</u></a> </td>
+        <td>
+            二级选择        </td>
+        <td> 是 </td>
+        <td>datingtype</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=datingtype'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=datingtype'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='3' class='np' /></td>
+        <td> 3 </td>
+        <td> <a href='stepselect_main.php?egroup=cosize'><u>公司规模</u></a> </td>
+        <td>
+            二级选择        </td>
+        <td> 是 </td>
+        <td>cosize</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=cosize'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=cosize'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='2' class='np' /></td>
+        <td> 2 </td>
+        <td> <a href='stepselect_main.php?egroup=bodytype'><u>体型</u></a> </td>
+        <td>
+            二级选择        </td>
+        <td> 是 </td>
+        <td>bodytype</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=bodytype'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=bodytype'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" height="24" onMouseMove="javascript:this.bgColor='#FCFDEE';"
+        onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td><input type='checkbox' name='ids[]' value='1' class='np' /></td>
+        <td> 1 </td>
+        <td> <a href='stepselect_main.php?egroup=blood'><u>血型</u></a> </td>
+        <td>
+            二级选择        </td>
+        <td> 是 </td>
+        <td>blood</td>
+        <td>
+            <a href='stepselect_main.php?action=upallcache&egroup=blood'>[更新缓存]</a>
+            <a href='stepselect_main.php?egroup=blood'>[查看子分类]</a>
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#F9FCEF" height="28">
+        <td colspan="8">
+            <span>共 1 页/15条记录</span>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

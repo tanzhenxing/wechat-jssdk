@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义表单管理</title>
+    <link href="/resource/admin/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+<body background='/resource/admin/images/allbg.gif' leftmargin='8' topmargin='8'>
+<div class="bodytitle">
+    <div class="bodytitleleft"></div>
+    <div class="bodytitletxt" style="padding-left:10px;">自定义表单管理</div>
+</div>
+
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class="tbtitle" style="border:1px solid #CFCFCF;border-bottom:none;">
+    <tr>
+        <td bgcolor="#EDF9D5" class="tbtitletxt" background="/resource/admin/images/tbg.gif">
+            <table width='96%' border="0" cellpadding='0' cellspacing='0'>
+                <tr>
+                    <td width='30%' style="padding-left:10px;">[<a href="diy_add.php"><u>增加新的自定义表单</u></a>]</td>
+                    <td align='right'>
+                        [图片说明：
+                        <img src='/resource/admin/images/manage1.gif' valign="middle"alt='更改' />更改
+                        <img src='/resource/admin/images/file_del.gif' valign="middle" alt='删除' />删除
+                        ]
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<table width="98%" border="0" cellpadding="1" cellspacing="1" align="center" class='tbtitle' style='background:#CFCFCF;margin-bottom:5px;'>
+    <tr align="center" bgcolor="#FBFCE2" height="26">
+        <td>diyid</td>
+        <td>名称</td>
+        <td>表名</td>
+        <td>管理</td>
+    </tr>
+    <tr align="center" bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>1</td>
+        <td><a href="diy_list.php?action=list&diyid=1"><u>自定义表单1</u></a></td>
+        <td>dede_diyform1</td>
+        <td>
+            <a href='diy_edit.php?diyid=1&dopost=edit'><img src='/resource/admin/images/manage1.gif' alt='更改' /></a> |
+            <a href='diy_edit.php?diyid=1&dopost=delete'><img src='/resource/admin/images/file_del.gif' alt='删除' /></a> |
+            <a href="../plus/diy.php?action=list&diyid=1" target="_blank"><img src='/resource/admin/images/gtk-tmp.png' title='预览' alt='预览' />前台预览</a>
+        </td>
+    </tr>
+</table>
+
+
+<table width="98%" border="0" cellpadding="5" cellspacing="1" align="center" style=" border:1px solid #CFCFCF;line-height:31px;margin:auto;">
+    <tr>
+        <td height="35" align="center" style="background:#F9FCEF;padding:7px 6px 6px 10px;" ><span>共 1 页/1条记录</span></td>
+    </tr>
+</table>
+</body>
+</html>

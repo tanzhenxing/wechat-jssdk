@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件管理器</title>
+    <link href="/resource/admin/css/base.css" rel="stylesheet" type="text/css">
+    <style>
+        .linerow{border-bottom: 1px solid #CBD8AC;height:24px}
+    </style>
+</head>
+<body background='/resource/admin/images/allbg.gif' leftmargin='8' topmargin='8'>
+<table width='98%' border='0' cellspacing='1' cellpadding='2' align='center' style="background:#cfcfcf;">
+    <tr bgcolor="#cfcfcf" height="28" align="center">
+        <td width="28%" background="/resource/admin/images/wbg.gif" ><strong>文件名</strong></td>
+        <td width="16%" background="/resource/admin/images/newlinebg3.gif"><strong>文件大小</strong></td>
+        <td width="22%" background="/resource/admin/images/wbg.gif"><strong>最后修改时间</strong></td>
+        <td width="34%"  background="/resource/admin/images/newlinebg3.gif"><strong>操作</strong></td>
+    </tr>
+
+    <tr>
+        <td bgcolor='#ffffff' height='25'>
+            <a href=file_manage_main.php?activepath=><img src=/resource/admin/images/dir2.gif border=0 width=16 height=16 align=absmiddle>上级目录</a>
+        </td>
+        <td colspan='3' bgcolor='#ffffff'>
+            当前目录:/uploads &nbsp;
+            <a href='file_pic_view.php?activepath=%2Fuploads' style='color:red'>[图片浏览器]</a>
+        </td>
+    </tr>
+    <tr bgcolor='#FFFFFF' height='26' onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>
+            <a href=file_manage_main.php?activepath=%2Fuploads%2F180521><img src=/resource/admin/images/dir.gif border=0 width=16 height=16 align=absmiddle>180521</a></td>
+        <td>　</td>
+        <td>　</td>
+        <td>
+            <a href=file_manage_view.php?filename=180521&activepath=%2Fuploads&fmdo=rename>[改名]</a>
+            &nbsp;
+            <a href=file_manage_view.php?filename=180521&activepath=%2Fuploads&type=dir&fmdo=del>[删除]</a>
+        </td>
+        </td>
+    </tr>
+    <tr bgcolor='#FFFFFF' height='26' onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>
+            <a href=file_manage_main.php?activepath=%2Fuploads%2Fallimg><img src=/resource/admin/images/dir.gif border=0 width=16 height=16 align=absmiddle>allimg</a></td>
+        <td>　</td>
+        <td>　</td>
+        <td>
+            <a href=file_manage_view.php?filename=allimg&activepath=%2Fuploads&fmdo=rename>[改名]</a>
+            &nbsp;
+            <a href=file_manage_view.php?filename=allimg&activepath=%2Fuploads&type=dir&fmdo=del>[删除]</a>
+        </td>
+        </td>
+    </tr>
+    <tr bgcolor='#FFFFFF' height='26' onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>
+            <a href=file_manage_main.php?activepath=%2Fuploads%2Fflink><img src=/resource/admin/images/dir.gif border=0 width=16 height=16 align=absmiddle>flink</a></td>
+        <td>　</td>
+        <td>　</td>
+        <td>
+            <a href=file_manage_view.php?filename=flink&activepath=%2Fuploads&fmdo=rename>[改名]</a>
+            &nbsp;
+            <a href=file_manage_view.php?filename=flink&activepath=%2Fuploads&type=dir&fmdo=del>[删除]</a>
+        </td>
+        </td>
+    </tr>
+    <tr bgcolor='#FFFFFF' height='26' onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>
+            <a href=file_manage_main.php?activepath=%2Fuploads%2Flitimg><img src=/resource/admin/images/dir.gif border=0 width=16 height=16 align=absmiddle>litimg</a></td>
+        <td>　</td>
+        <td>　</td>
+        <td>
+            <a href=file_manage_view.php?filename=litimg&activepath=%2Fuploads&fmdo=rename>[改名]</a>
+            &nbsp;
+            <a href=file_manage_view.php?filename=litimg&activepath=%2Fuploads&type=dir&fmdo=del>[删除]</a>
+        </td>
+        </td>
+    </tr>
+    <tr bgcolor='#FFFFFF' height='26' onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>
+            <a href=file_manage_main.php?activepath=%2Fuploads%2Fmedia><img src=images/dir.gif border=0 width=16 height=16 align=absmiddle>media</a></td>
+        <td>　</td>
+        <td>　</td>
+        <td>
+            <a href=file_manage_view.php?filename=media&activepath=%2Fuploads&fmdo=rename>[改名]</a>
+            &nbsp;
+            <a href=file_manage_view.php?filename=media&activepath=%2Fuploads&type=dir&fmdo=del>[删除]</a>
+        </td>
+        </td>
+    </tr>
+    <tr bgcolor='#FFFFFF' height='26' onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>
+            <a href=file_manage_main.php?activepath=%2Fuploads%2Fsoft><img src=images/dir.gif border=0 width=16 height=16 align=absmiddle>soft</a></td>
+        <td>　</td>
+        <td>　</td>
+        <td>
+            <a href=file_manage_view.php?filename=soft&activepath=%2Fuploads&fmdo=rename>[改名]</a>
+            &nbsp;
+            <a href=file_manage_view.php?filename=soft&activepath=%2Fuploads&type=dir&fmdo=del>[删除]</a>
+        </td>
+        </td>
+    </tr>
+    <tr bgcolor='#FFFFFF' height='26' onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>
+            <a href=file_manage_main.php?activepath=%2Fuploads%2Fuserup><img src=images/dir.gif border=0 width=16 height=16 align=absmiddle>userup</a></td>
+        <td>　</td>
+        <td>　</td>
+        <td>
+            <a href=file_manage_view.php?filename=userup&activepath=%2Fuploads&fmdo=rename>[改名]</a>
+            &nbsp;
+            <a href=file_manage_view.php?filename=userup&activepath=%2Fuploads&type=dir&fmdo=del>[删除]</a>
+        </td>
+        </td>
+    </tr>
+    <tr bgcolor='#FFFFFF'  height='26'onMouseMove="javascript:this.bgColor='#F9FBF0';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
+        <td>
+            <a href=/uploads/index.html target=_blank><img src=images/htm.gif border=0 width=16 height=16 align=absmiddle>index.html</a></td>
+        <td>0.00 KB</td>
+        <td align='center'>2011-07-01 16:36:29</td>
+        <td>
+            <a href='file_manage_view.php?fmdo=edit&filename=index.html&activepath=%2Fuploads'>[编辑]</a>
+            &nbsp;
+            <a href='file_manage_view.php?fmdo=rename&filename=index.html&activepath=%2Fuploads'>[改名]</a>
+            &nbsp;
+            <a href='file_manage_view.php?fmdo=del&filename=index.html&activepath=%2Fuploads'>[删除]</a>
+            &nbsp;
+            <a href='file_manage_view.php?fmdo=move&filename=index.html&activepath=%2Fuploads'>[移动]</a>
+        </td>
+    </tr><tr>
+    <td colspan="4" height='26' bgcolor='#F9FCEF'>
+        <a href='file_manage_main.php'>[根目录]</a>
+        &nbsp;
+        <a href='file_manage_view.php?fmdo=newfile&activepath=%2Fuploads'>[新建文件]</a>
+        &nbsp;
+        <a href='file_manage_view.php?fmdo=newdir&activepath=%2Fuploads'>[新建目录]</a>
+        &nbsp;
+        <a href='file_manage_view.php?fmdo=upload&activepath=%2Fuploads'>[文件上传]</a>
+        &nbsp;
+        <a href='file_manage_control.php?fmdo=space&activepath=%2Fuploads'>[空间检查]</a>
+        &nbsp;&nbsp;</td>
+</tr>
+</table>
+
+</body>
+</html>

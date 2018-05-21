@@ -29,4 +29,9 @@ class System extends AdminBase
     {
 
     }
+
+    public function cache()
+    {
+        return $this->fetch();
+    }
 }
