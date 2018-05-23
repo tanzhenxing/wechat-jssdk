@@ -52,6 +52,7 @@
             <td width="8%">发布人</td>
             <td width="10%">操作</td>
         </tr>
+        {volist name="article" id="vo"}
         <tr align='center' bgcolor="#FFFFFF" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
             <td nowrap>
                 6	</td>
@@ -60,155 +61,26 @@
             </td>
             <td align='left'>
 		<span id="arc6">
-			<a href='archives_do.php?aid=6&dopost=editArchives'
-               oncontextmenu="ShowMenu(event,this,6,'客户资金保护措施')">
-				<u>客户资金保护措施</u>
+			<a href='/admin/article/edit/id/{$vo.id}'
+               oncontextmenu="ShowMenu(event,this,6,'{$vo.title}')">
+				<u>{$vo.title}</u>
 			</a>
 		</span>
             </td>
-            <td>2018-05-21</td>
-            <td><a href='content_list.php?cid=2'>企业新闻</a></td>
-            <td>177</td>
+            <td>{$vo.pubdate}</td>
+            <td><a href='/admin/category'>{$vo.category_title}</a></td>
+            <td>{$vo.click}</td>
             <td>已生成</td>
             <td>开放浏览</td>
-            <td>admin</td>
+            <td>{$vo.writer}</td>
             <td>
-                <img src='/resource/admin/images/trun.gif' title="编辑属性" alt="编辑属性" onClick="QuickEdit(6, event, this);" style='cursor:pointer' border='0' width='16' height='16' />
-                <img src='/resource/admin/images/gtk-edit.png' title="编辑" alt="编辑" onClick="editArc(6);" style='cursor:pointer' border='0' width='16' height='16' />
-                <img src='/resource/admin/images/part-list.gif' title="预览" alt="预览" onClick="viewArc(6);" style='cursor:pointer' border='0' width='16' height='16' />
+                <img src='/resource/admin/images/trun.gif' title="编辑属性" alt="编辑属性" onClick="QuickEdit({$vo.id}, event, this);" style='cursor:pointer' border='0' width='16' height='16' />
+                <img src='/resource/admin/images/gtk-edit.png' title="编辑" alt="编辑" onClick="editArc({$vo.id});" style='cursor:pointer' border='0' width='16' height='16' />
+                <img src='/resource/admin/images/part-list.gif' title="预览" alt="预览" onClick="viewArc({$vo.id});" style='cursor:pointer' border='0' width='16' height='16' />
             </td>
         </tr>
+        {/volist}
 
-        <tr align='center' bgcolor="#FFFFFF" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
-            <td nowrap>
-                5	</td>
-            <td>
-                <input name="arcID" type="checkbox" id="arcID" value="5" class="np" />
-            </td>
-            <td align='left'>
-		<span id="arc5">
-			<a href='archives_do.php?aid=5&dopost=editArchives'
-               oncontextmenu="ShowMenu(event,this,5,'客户资金保护措施')">
-				<u>客户资金保护措施</u>
-			</a>
-		</span>
-            </td>
-            <td>2018-05-21</td>
-            <td><a href='content_list.php?cid=2'>企业新闻</a></td>
-            <td>177</td>
-            <td>已生成</td>
-            <td>开放浏览</td>
-            <td>admin</td>
-            <td>
-                <img src='/resource/admin/images/trun.gif' title="编辑属性" alt="编辑属性" onClick="QuickEdit(5, event, this);" style='cursor:pointer' border='0' width='16' height='16' />
-                <img src='/resource/admin/images/gtk-edit.png' title="编辑" alt="编辑" onClick="editArc(5);" style='cursor:pointer' border='0' width='16' height='16' />
-                <img src='/resource/admin/images/part-list.gif' title="预览" alt="预览" onClick="viewArc(5);" style='cursor:pointer' border='0' width='16' height='16' />
-            </td>
-        </tr>
-        <tr align='center' bgcolor="#FFFFFF" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
-            <td nowrap>
-                4	</td>
-            <td>
-                <input name="arcID" type="checkbox" id="arcID" value="4" class="np" />
-            </td>
-            <td align='left'>
-		<span id="arc4">
-			<a href='archives_do.php?aid=4&dopost=editArchives'
-               oncontextmenu="ShowMenu(event,this,4,'客户资金保护措施')">
-				<u>客户资金保护措施</u>
-			</a>
-		</span>
-            </td>
-            <td>2018-05-21</td>
-            <td><a href='content_list.php?cid=1'>新闻动态</a></td>
-            <td>191</td>
-            <td>已生成</td>
-            <td>开放浏览</td>
-            <td>admin</td>
-            <td>
-                <img src='/resource/admin/images/trun.gif' title="编辑属性" alt="编辑属性" onClick="QuickEdit(4, event, this);" style='cursor:pointer' border='0' width='16' height='16' />
-                <img src='/resource/admin/images/gtk-edit.png' title="编辑" alt="编辑" onClick="editArc(4);" style='cursor:pointer' border='0' width='16' height='16' />
-                <img src='/resource/admin/images/part-list.gif' title="预览" alt="预览" onClick="viewArc(4);" style='cursor:pointer' border='0' width='16' height='16' />
-            </td>
-        </tr>
-        <tr align='center' bgcolor="#FFFFFF" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
-            <td nowrap>
-                3	</td>
-            <td>
-                <input name="arcID" type="checkbox" id="arcID" value="3" class="np" />
-            </td>
-            <td align='left'>
-		<span id="arc3">
-			<a href='archives_do.php?aid=3&dopost=editArchives'
-               oncontextmenu="ShowMenu(event,this,3,'2018年美元将如何演绎？听听全球最顶级投行怎么')">
-				<u>2018年美元将如何演绎？听听全球最顶级投行怎么</u>
-			</a>
-		</span>
-            </td>
-            <td>2018-05-21</td>
-            <td><a href='content_list.php?cid=2'>企业新闻</a></td>
-            <td>173</td>
-            <td>已生成</td>
-            <td>开放浏览</td>
-            <td>admin</td>
-            <td>
-                <img src='images/trun.gif' title="编辑属性" alt="编辑属性" onClick="QuickEdit(3, event, this);" style='cursor:pointer' border='0' width='16' height='16' />
-                <img src='images/gtk-edit.png' title="编辑" alt="编辑" onClick="editArc(3);" style='cursor:pointer' border='0' width='16' height='16' />
-                <img src='images/part-list.gif' title="预览" alt="预览" onClick="viewArc(3);" style='cursor:pointer' border='0' width='16' height='16' />
-            </td>
-        </tr>
-        <tr align='center' bgcolor="#FFFFFF" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
-            <td nowrap>
-                2	</td>
-            <td>
-                <input name="arcID" type="checkbox" id="arcID" value="2" class="np" />
-            </td>
-            <td align='left'>
-		<span id="arc2">
-			<a href='archives_do.php?aid=2&dopost=editArchives'
-               oncontextmenu="ShowMenu(event,this,2,'决策分析：美元暗藏多重利空？ 英镑“时运不济')">
-				<u>决策分析：美元暗藏多重利空？ 英镑“时运不济</u>
-			</a>
-		</span>
-            </td>
-            <td>2018-05-21</td>
-            <td><a href='content_list.php?cid=3'>行业新闻</a></td>
-            <td>178</td>
-            <td>已生成</td>
-            <td>开放浏览</td>
-            <td>admin</td>
-            <td>
-                <img src='images/trun.gif' title="编辑属性" alt="编辑属性" onClick="QuickEdit(2, event, this);" style='cursor:pointer' border='0' width='16' height='16' />
-                <img src='images/gtk-edit.png' title="编辑" alt="编辑" onClick="editArc(2);" style='cursor:pointer' border='0' width='16' height='16' />
-                <img src='images/part-list.gif' title="预览" alt="预览" onClick="viewArc(2);" style='cursor:pointer' border='0' width='16' height='16' />
-            </td>
-        </tr>
-        <tr align='center' bgcolor="#FFFFFF" height="26" align="center" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';">
-            <td nowrap>
-                1	</td>
-            <td>
-                <input name="arcID" type="checkbox" id="arcID" value="1" class="np" />
-            </td>
-            <td align='left'>
-		<span id="arc1">
-			<a href='archives_do.php?aid=1&dopost=editArchives'
-               oncontextmenu="ShowMenu(event,this,1,'黄金技术分析：突破关键阻力 短期有望看向128')">
-				<u>黄金技术分析：突破关键阻力 短期有望看向128</u>
-			</a>
-		</span>
-                [<font color='red'>图片</font>]	</td>
-            <td>2018-05-21</td>
-            <td><a href='content_list.php?cid=3'>行业新闻</a></td>
-            <td>77</td>
-            <td>已生成</td>
-            <td>开放浏览</td>
-            <td>admin</td>
-            <td>
-                <img src='images/trun.gif' title="编辑属性" alt="编辑属性" onClick="QuickEdit(1, event, this);" style='cursor:pointer' border='0' width='16' height='16' />
-                <img src='images/gtk-edit.png' title="编辑" alt="编辑" onClick="editArc(1);" style='cursor:pointer' border='0' width='16' height='16' />
-                <img src='images/part-list.gif' title="预览" alt="预览" onClick="viewArc(1);" style='cursor:pointer' border='0' width='16' height='16' />
-            </td>
-        </tr>
         <tr bgcolor="#ffffff">
             <td height="36" colspan="10">
                 &nbsp;
@@ -237,7 +109,7 @@
     <input type='hidden' name='dopost' value='listArchives' />
     <table width='98%'  border='0' cellpadding='1' cellspacing='1' bgcolor='#cfcfcf' align="center" style="margin-top:8px">
         <tr bgcolor='#EEF4EA'>
-            <td background='images/wbg.gif' align='center'>
+            <td background='/resource/admin/images/wbg.gif' align='center'>
                 <table border='0' cellpadding='0' cellspacing='0' height="32">
                     <tr>
                         <td width='160'>

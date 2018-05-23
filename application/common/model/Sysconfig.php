@@ -11,5 +11,6 @@ use think\Model;
 
 class  Sysconfig extends Model
 {
-
+    // 直接使用配置参数名
+    protected $connection = 'my_site';
 }

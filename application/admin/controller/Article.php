@@ -45,9 +45,25 @@ class Article extends AdminBase
 
     }
 
-    public function edit()
+    /**
+     * @param $id
+     * @return mixed
+     * @throws \think\exception\DbException
+     */
+    public function edit($id)
     {
+        $article = Archives::get($id);
+        // 文章正文内容
+        $addonarticle = Addonarticle::get(['aid'=>$id]);
+        $article['body'] = $addonarticle['body'];
 
+        // 文章分类
+        $category = Arctype::get($article['typeid']);
+        $article['category_title'] = $category['typename'];
+
+        $this->assign('article',$article);
+
+        return $this->fetch();
     }
 
     public function update()
