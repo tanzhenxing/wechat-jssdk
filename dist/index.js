@@ -2,7 +2,7 @@ import jweixin from '../lib/jweixin'
 import sha1 from '../lib/sha1'
 
 export default {
-    debug: false,
+    debug: false,  // 是否开启调试
     jsApiList: [
         'checkJsApi',
         'onMenuShareAppMessage',
@@ -51,12 +51,17 @@ export default {
     //判断是否在微信中
     isWechat() {
         let ua = window.navigator.userAgent.toLowerCase();
-        return ua.match(/micromessenger/i) === 'micromessenger';
+		if(ua.indexOf('micromessenger')===-1){
+			return false
+		} else {
+			return true
+		}
     },
-    // 生成随机字符串
+	// 生成随机字符串
     getNonceStr(len) {
         len = len || 32;
-        let $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+		// 去掉容易混淆的字符oOLl,9gq,Vv,Uu,I1
+        let $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
         let maxPos = $chars.length;
         let nonceStr = '';
         for (let i = 0; i < len; i++) {
@@ -68,8 +73,17 @@ export default {
     setConfig(appid,ticket,jsApiList=null,openTagList=null) {
         // 是否运行在微信环境
         if (!this.isWechat()) {
+			console.log('没有运行在微信环境，无法使用');
             return;
         }
+		if(appid===undefined){
+			console.log('appid没有设置');
+			return;
+		}
+		if(ticket===undefined){
+			console.log('ticket没有设置');
+			return;
+		}
         // 默认配置
         if(jsApiList===null){
             jsApiList = this.jsApiList;
@@ -87,7 +101,7 @@ export default {
         // 权限验证配置
         jweixin.config({
             debug: this.debug,
-            appId: appId,
+            appId: appid,
             timestamp: timestamp,
             nonceStr: nonceStr,
             signature: signature,
@@ -95,7 +109,6 @@ export default {
             openTagList: openTagList
         });
     },
-
     // 微信 Jssdk
     jsSdk(name,data={}) {
         // 返回结果
