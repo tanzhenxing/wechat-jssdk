@@ -1,6 +1,6 @@
 {
   "name": "@tanzhenxing/wechat-jssdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "'wechat js sdk'",
   "homepage": "https://github.com/tanzhenxing/wechat-jssdk",
   "main": "dist/index.js",
