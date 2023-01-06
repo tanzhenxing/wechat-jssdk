@@ -1,4 +1,4 @@
 ## 1.0.0 (2023-01-06)
 
 ### 功能简介
-wechatJsSdk 依赖任何第三方库 sha1
+wechatJsSdk 不依赖第三方库
